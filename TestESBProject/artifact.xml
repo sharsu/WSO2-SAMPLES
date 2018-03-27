@@ -11,4 +11,7 @@
     <artifact name="TestProxyService" groupId="com.example.TestESBProject.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/TestProxyService.xml</file>
     </artifact>
+    <artifact name="TestSequence" groupId="com.example.TestESBProject.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/TestSequence.xml</file>
+    </artifact>
 </artifacts>

@@ -3,14 +3,28 @@
   transports="https http" xmlns="http://ws.apache.org/ns/synapse">
   <target>
     <inSequence>
-      <xslt key="conf:myresources/StockPriceTransformation.xslt"/>
+      <!-- Will transform the incoming message to the format specified below -->
+      <payloadFactory media-type="xml">
+        <format>
+          <m:getQuote xmlns:m="http://quickstart.samples">
+            <m:request>
+              <m:symbol>$1</m:symbol>
+            </m:request>
+          </m:getQuote>
+        </format>
+        <args>
+          <arg evaluator="xml" expression="//m0:Code" xmlns:m0="http://quickstart.samples"/>
+        </args>
+      </payloadFactory>
+      <send>
+        <endpoint>
+          <address trace="disable" uri="http://localhost:9000/services/SimpleStockQuoteService"/>
+        </endpoint>
+      </send>
     </inSequence>
     <outSequence>
-      <send/>
+      <respond/>
     </outSequence>
-    <faultSequence>
-      <send/>
-    </faultSequence>
+    <faultSequence/>
   </target>
-  <publishWSDL uri="http://localhost:8080/axis2/services/StockQuoteService?wsdl"/>
 </proxy>
