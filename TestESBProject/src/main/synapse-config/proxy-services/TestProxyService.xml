@@ -5,7 +5,12 @@
     <inSequence>
       <xslt key="conf:myresources/StockPriceTransformation.xslt"/>
     </inSequence>
-    <outSequence/>
-    <faultSequence/>
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence>
+      <send/>
+    </faultSequence>
   </target>
+  <publishWSDL uri="http://localhost:8080/axis2/services/StockQuoteService?wsdl"/>
 </proxy>
